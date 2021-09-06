@@ -3,15 +3,25 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "yarn workscpaces run build",
-    "serve": "wsrun --parallel serve",
-    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\""
+    "start": "lerna run --parallel start",
+    "build": "lerna run build"
   },
   "workspaces": [
     "packages/*"
   ],
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "devDependencies": {
-    "concurrently": "^6.2.1",
-    "wsrun": "^5.2.4"
+    "@babel/core": "^7.14.3",
+    "lerna": "^4.0.0",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "external-remotes-plugin": "^1.0.0",
+    "html-webpack-plugin": "^5.3.1",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^4.0.0"
   }
 }

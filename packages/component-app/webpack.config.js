@@ -1,16 +1,14 @@
-const htmlWebpackPlugin = require('html-webpack-plugin')
-const copyWebpackPlugin = require('copy-webpack-plugin')
-const moduleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const moduleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
+// use follow statement
+const { ModuleFederationPlugin } = require('webpack').container;
+const path = require('path');
 
-const deps = require()
-
-
-const deps = require("./package.json").dependencies;
 module.exports = {
   entry: "./src/index",
 
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath: "http://localhost:3002/",
   },
 
   mode: "development",
@@ -20,6 +18,10 @@ module.exports = {
 
   optimization: {
     minimize: false,
+  },
+  devServer: {
+    static: path.join(__dirname, 'dist'),
+    port: 3002,
   },
 
   resolve: {
@@ -42,35 +44,22 @@ module.exports = {
           presets: [require.resolve("@babel/preset-react")],
         },
       },
-      {
-        test: /\.md$/,
-        loader: "raw-loader",
-      },
     ],
   },
 
   plugins: [
-    new CopyPlugin([{ from: "assets", to: "assets" }]),
     new ModuleFederationPlugin({
-      name: "home",
-      filename: "remoteEntry.js",
-      remotes: {
-        nav: "nav@http://localhost:3003/remoteEntry.js",
-      },
+      name: "longfor-ui",
+      filename: "longforUI.js",
       exposes: {
-        "./ProductCarousel": "./src/ProductCarousel",
-        "./fruit": "./src/fruit",
-        "./ProductCard": "./src/ProductCard",
+        "./components": "./src/components/index",
       },
       shared: {
-        ...deps,
         react: {
           singleton: true,
-          requiredVersion: deps.react,
         },
         "react-dom": {
           singleton: true,
-          requiredVersion: deps["react-dom"],
         },
       },
     }),

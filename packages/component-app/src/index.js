@@ -1,3 +1,7 @@
-window.app1Url = "http://localhost:3002"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Layout from './components/Layout'
 
-export { Layout } from './components'
+window.appUrl = "http://localhost:3002"
+
+ReactDOM.render(<Layout/>, document.getElementById("root"));

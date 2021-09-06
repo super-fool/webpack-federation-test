@@ -31,13 +31,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js/,
-        type: "javascript/auto",
-        resolve: {
-          fullySpecified: false,
-        },
-      },
-      {
         test: /\.jsx?$/,
         loader: require.resolve("babel-loader"),
         options: {
@@ -49,16 +42,18 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "longfor-ui",
+      name: "longfor_ui",
       filename: "longforUI.js",
       exposes: {
-        "./components": "./src/components/index",
+        "./Layout": "./src/components/Layout",
       },
       shared: {
         react: {
+          eager: true,
           singleton: true,
         },
         "react-dom": {
+          eager: true,
           singleton: true,
         },
       },

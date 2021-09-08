@@ -46,18 +46,18 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "main-app",
+      name: "main_app",
       remotes: {
-        layout: 'layout@[appUrl]/longforUI.js'
+        'longfor_ui': 'longfor_ui@http://localhost:3002/longforUI.js'
       },
-      shared: {
-        react: {
-          singleton: true,
-        },
-        "react-dom": {
-          singleton: true,
-        },
-      },
+      // shared: {
+      //   react: {
+      //     singleton: true,
+      //   },
+      //   "react-dom": {
+      //     singleton: true,
+      //   },
+      // },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",

@@ -1,5 +1,5 @@
 {
-  "name": "component",
+  "name": "layout-app",
   "version": "0.0.0",
   "scripts": {
     "start": "webpack serve",

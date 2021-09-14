@@ -45,18 +45,23 @@ module.exports = {
       name: "longfor_ui",
       filename: "longforUI.js",
       exposes: {
-        "./Layout": "./src/components/Layout",
+        "./Layout": "./src/index",
+        "./component": './src/components/index'
       },
-      shared: {
-        react: {
-          eager: true,
-          singleton: true,
-        },
-        "react-dom": {
-          eager: true,
-          singleton: true,
-        },
+      remotes: {
+        'main_app': 'main_app@http://localhost:3001/mainApp.js'
       },
+      shared: ['react', 'react-dom'],
+      // shared: {
+      //   react: {
+      //     // eager: true,
+      //     singleton: true,
+      //   },
+      //   "react-dom": {
+      //     // eager: true,
+      //     singleton: true,
+      //   },
+      // },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",

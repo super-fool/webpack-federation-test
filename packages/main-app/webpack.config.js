@@ -47,14 +47,21 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "main_app",
+      filename: "mainApp.js",
+      exposes: {
+        "./Home": "./src/views/Home.js"
+      },
       remotes: {
         'longfor_ui': 'longfor_ui@http://localhost:3002/longforUI.js'
       },
+      shared: ['react', 'react-dom'],
       // shared: {
       //   react: {
+      //     // eager: true,
       //     singleton: true,
       //   },
       //   "react-dom": {
+      //     // eager: true,
       //     singleton: true,
       //   },
       // },

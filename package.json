@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "initialize": "npm install && lerna clean --yes && lerna bootstrap",
     "start": "lerna run --parallel start",
     "build": "lerna run build"
   },

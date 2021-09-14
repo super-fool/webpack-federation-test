@@ -1,15 +1,9 @@
-import React, { Suspense } from 'react'
-const Layout = React.lazy(() => import('longfor_ui/Layout'))
+import React from 'react'
+import { Footer } from 'longfor_ui/component'
 
-console.log(Layout)
 const App = () => {
   return (
-    <div>
-      <Suspense fallback={'loading...'}>
-        <Layout />
-      </Suspense>
-      <div>main app</div>
-    </div>
+    <Footer />
   )
 }
 
